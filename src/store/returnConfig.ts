@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 import { useUserSelectComponentsStore } from './userSelectComponents'
 import { useComponentsStore } from './components'
-export const useReturnConfigStore =() =>{
+export const useReturnConfigStore = () =>{
     const useUserSelectComponents = useUserSelectComponentsStore()
     const useComponents = useComponentsStore()
     return defineStore({

@@ -66,12 +66,13 @@
     <div class="formbox">
       <div
         v-for="(item, i) in useUserSelectComponents.userSelectComponents"
-        :key="i"
+        :key="item.name + i"
         v-show="editorState.current - 1 === i"
       >
-        <FormKit type="form" id="myform" v-model="item.props" @submit="register">
-          <FormKitSchema :schema="item.formKit" />
-          <pre wrap>{{ item.props }}</pre>
+      <!-- 通过 给FormKit 设置 key 来解决添加组件时 item.props 的数据顺序问题 -->
+        <FormKit type="form" :key="item.name + i" id="myform" v-model="item.props" @submit="register">
+          <FormKitSchema :schema="item.formKit"  />
+          <pre wrap >{{ item.props }}</pre>
         </FormKit>
       </div>
     </div>

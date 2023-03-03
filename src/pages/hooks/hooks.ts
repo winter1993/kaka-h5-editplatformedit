@@ -51,7 +51,6 @@ const eventInit = (selectCb:any) => {
     componentsPND.addEventListener('click',(e:any)=>{
         let node = e.target;
         // 遍历元素，找到以 'coco-render-id-_component_'  作为 id 的组件元素，计算高度和位置
-        console.log('node:',node)
         while(node.tagName !== 'HTML') {
         let currentId = node?.getAttribute('id') || '';
         if (currentId.indexOf('coco-render-id-_component_') >= 0) {
@@ -71,7 +70,6 @@ const eventInit = (selectCb:any) => {
           });
         }
         node = node.parentNode;
-        console.log('parentNode:',node)
       }
     })
     // 为页面组件绑定 mouseover 事件

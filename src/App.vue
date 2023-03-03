@@ -12,7 +12,6 @@ window.addEventListener('message',(e) => {
   // store.commit(e.data.type, e.data.data);
   
   if(config[e.data.type]) config[e.data.type](e.data.data)
-  console.log('message:',e.data.type, e.data.data)
 });
 </script>
 
