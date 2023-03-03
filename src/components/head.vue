@@ -18,7 +18,7 @@
         @select="(path:any) => handleSelect(path)"
       >
         <a-menu-item>
-          <a href="https://github.com/coco-h5/coco-web" target="_blank"> Github </a>
+          <a href="https://github.com/orgs/winter1993/repositories" target="_blank"> Github </a>
         </a-menu-item>
         <slot name="menu">
           <a-menu-item>

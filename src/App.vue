@@ -1,39 +1,7 @@
 <script setup lang="ts">
 import Header from '@/components/head.vue'
-import { useComponentsStore } from './store/components'
-import { useUserSelectComponentsStore } from './store/userSelectComponents'
-const useComponents = useComponentsStore()
-const useUserSelectComponents = useUserSelectComponentsStore()
-const config:any = {
-  defaultComponents:(val:any) => {
-    useComponents.updateComponents(val.components)
-    useUserSelectComponents.update(val.userSelectComponents)
-  },
-  returnConfig:(val:any) => {
-    useUserSelectComponents.update(val.userSelectComponents)
-  },
-  addComponent:(val:any) => {
-    console.log('addComponent back:',val)
-    useUserSelectComponents.update(val.userSelectComponents)
-  },
-  changeProps:(val:any) => {
-    console.log('changeProps back:',val)
-    useUserSelectComponents.update(val.userSelectComponents)
-  },
-  deleteComponent:(val:any) => {
-    console.log('deleteComponent back:',val)
-    useUserSelectComponents.update(val.userSelectComponents)
-  },
-  sortComponent:(val:any) => {
-    console.log('sortComponent back:',val)
-    useUserSelectComponents.update(val.userSelectComponents)
-  },
-  copyComponent:(val:any) => {
-    console.log('copyComponent back:',val)
-    useUserSelectComponents.update(val.userSelectComponents)
-  },
-}
-
+import { useReturnConfigStore } from './store/returnConfig'
+const config:any = useReturnConfigStore()()
 // 监听事件
 window.addEventListener('message',(e) => {
   // 不接受消息源来自于当前窗口的消息

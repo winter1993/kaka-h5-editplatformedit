@@ -151,17 +151,18 @@ const drop_handler = (ev: any) => {
     data: JSON.parse(JSON.stringify({ data, index })),
   });
 };
-const onDrag = ({ left, top }: any, index: any, props: any) => {
-  postMsgToChild({ type: "changeIndex", data: index });
-  postMsgToChild({
-    type: "changeProps",
-    data: {
-      ...props,
-      x: left,
-      y: top,
-    },
-  });
-};
+
+// const onDrag = ({ left, top }: any, index: any, props: any) => {
+//   postMsgToChild({ type: "changeIndex", data: index });
+//   postMsgToChild({
+//     type: "changeProps",
+//     data: {
+//       ...props,
+//       x: left,
+//       y: top,
+//     },
+//   });
+// };
 const initConfig = () => {
   console.log("loading...");
   state.spinning = false;
