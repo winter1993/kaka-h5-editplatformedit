@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/login',
@@ -33,7 +33,8 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-    history:createWebHistory(),
+    // history:createWebHistory(),
+    history:createWebHashHistory(), //前端打包使用createWebHashHistory
     routes
 })
 
