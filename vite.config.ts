@@ -13,6 +13,7 @@ export default defineConfig({
             '@': path.resolve(__dirname, 'src')
         }
     },
+    base:'/kaka-h5-editplatformedit/',
     plugins: [vue()],
     server: {
         port: 8082, //启动端口
