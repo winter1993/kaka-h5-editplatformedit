@@ -1,5 +1,5 @@
 import {reactive, nextTick} from 'vue';
-function getElementTop(element){
+function getElementTop(element:any){
     let actualTop = element.offsetTop;
     let current = element.offsetParent;
   
@@ -12,7 +12,7 @@ function getElementTop(element){
   }
 
   export const useEditor = () => {
-    const state = reactive({
+    const state:any = reactive({
         toolStyle: {},
         activeStyle: {},
         hoverStyle: {},
@@ -22,7 +22,7 @@ function getElementTop(element){
         containerHeight: 667,
         dragableComponents: []
       });
-      const restStyle = (height, top, type) => {
+      const restStyle = (height:any, top:any, type:any) => {
         state[type] = {
           height,
           top: `${top}px`,
@@ -30,7 +30,7 @@ function getElementTop(element){
         nextTick(() => {
           if(type === 'activeStyle')
           {
-            const toolND = document.getElementById('se-view-tools');
+            const toolND:any = document.getElementById('se-view-tools');
             const toolHeight = parseInt(getComputedStyle(toolND).height, 10);
   
             state.toolStyle = {
@@ -41,13 +41,14 @@ function getElementTop(element){
       }
 
       //只需要我们对页面和编辑器设置相同主域，便可以进行跨域操作，获取子 iframe 的元素：
-const eventInit = (selectCb) => {
+const eventInit = (selectCb:any) => {
     //获取子template iframe 的 dom
-    console.log('eventInit:',document.getElementById('frame').contentWindow.document)
-    const componentsPND = document.getElementById('frame')?.contentWindow.document.getElementById('slider-view');
+    const ele:any = document.getElementById('frame')
+    console.log('eventInit:',ele.contentWindow.document)
+    const componentsPND = ele.contentWindow.document.getElementById('slider-view');
     console.log('componentsPND:',componentsPND)
     // 为template页面组件绑定 click 事件
-    componentsPND.addEventListener('click',(e)=>{
+    componentsPND.addEventListener('click',(e:any)=>{
         let node = e.target;
         // 遍历元素，找到以 'coco-render-id-_component_'  作为 id 的组件元素，计算高度和位置
         console.log('node:',node)
@@ -59,7 +60,7 @@ const eventInit = (selectCb) => {
           const { height } = getComputedStyle(node,null);
           restStyle(height, top, 'activeStyle');
           console.log('childNodes:',Array.from(componentsPND.childNodes))
-          const pids = Array.from(componentsPND.childNodes).map(nd => nd.id&&nd.getAttribute('id'))
+          const pids = Array.from(componentsPND.childNodes).map((nd:any) => nd.id&&nd.getAttribute('id'))
           pids.forEach((id, index) => {
             if (id === currentId) {
               state.isTop = index === 0;
@@ -74,7 +75,7 @@ const eventInit = (selectCb) => {
       }
     })
     // 为页面组件绑定 mouseover 事件
-    componentsPND.addEventListener('mouseover', (e) => {
+    componentsPND.addEventListener('mouseover', (e:any) => {
         let node = e.target;
         while(node.tagName !== 'HTML') {
           let currentId = node?.getAttribute('id') || '';
@@ -83,7 +84,7 @@ const eventInit = (selectCb) => {
               const top = getElementTop(node);
               const { height } = getComputedStyle(node,null);
               restStyle(height, top, 'hoverStyle');
-              const pids = Array.from(componentsPND.childNodes).map(nd => nd.getAttribute('id'))
+              const pids = Array.from(componentsPND.childNodes).map((nd:any) => nd.getAttribute('id'))
               pids.forEach((id, index) => {
                 if (id === currentId) {
                   state.isTop = index === 0;
@@ -100,12 +101,14 @@ const eventInit = (selectCb) => {
         }
       });
 }
-const getIndex = (y) => {
-  const componentsPND = document.getElementById('frame')?.contentWindow.document.getElementById('slider-view');
+const getIndex = (y:any) => {
+  const ele:any = document.getElementById('frame')
+    console.log('eventInit:',ele.contentWindow.document)
+    const componentsPND = ele.contentWindow.document.getElementById('slider-view');
   let total = 40;
   let index = 0;
   
-  Array.from(componentsPND.childNodes).some((nd, i) => {
+  Array.from(componentsPND.childNodes).some((nd:any, i) => {
     try {
       total = total + parseInt(getComputedStyle(nd).height, 10);
       if (total > y) {
@@ -121,11 +124,13 @@ const getIndex = (y) => {
   });
   return index;
 }
-const init = (index) => {
+const init = (index:any) => {
   console.log('init============>')
-  const componentsPND = document.getElementById('frame')?.contentWindow.document.getElementById('slider-view');
+  const ele:any = document.getElementById('frame')
+    console.log('eventInit:',ele.contentWindow.document)
+    const componentsPND = ele.contentWindow.document.getElementById('slider-view');
   if (!componentsPND) return;
-  const container = document.getElementById('frame')?.contentWindow.document.getElementsByTagName('html')[0]
+  const container = ele.contentWindow.document.getElementsByTagName('html')[0]
   const containerHeight = Math.ceil(parseFloat(getComputedStyle(container).height) + componentsPND.offsetTop);
   state.containerHeight = containerHeight > 667 ? containerHeight : 667;
   if (index === -1) return;
@@ -136,7 +141,7 @@ const init = (index) => {
   const top = getElementTop(node);
   const { height } = getComputedStyle(node);
   restStyle(height, top, 'activeStyle');
-  const pids = Array.from(componentsPND.childNodes).map(nd =>{ 
+  const pids = Array.from(componentsPND.childNodes).map((nd:any) =>{ 
     if (nd.nodeName === "#text"  ) return 
     return nd.getAttribute('id')
   })
@@ -149,10 +154,12 @@ const init = (index) => {
   })
 }
   // 需要设置fixed布局的组件样式
-  const setFixedStyle = (index) => {
-    const componentsPND = document.getElementById('frame')?.contentWindow.document.getElementById('slider-view');
+  const setFixedStyle = (index:any) => {
+    const ele:any = document.getElementById('frame')
+    console.log('eventInit:',ele.contentWindow.document)
+    const componentsPND = ele.contentWindow.document.getElementById('slider-view');
     state.dragableComponents = [];
-    Array.from(componentsPND?.childNodes || []).forEach(nd => {
+    Array.from(componentsPND?.childNodes || []).forEach((nd:any) => {
       if(!nd) return
       if(nd.nodeName === "#text" ) return
       if (nd?.getAttribute('data-layout') === 'fixed') {

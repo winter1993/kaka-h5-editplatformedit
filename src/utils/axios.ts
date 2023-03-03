@@ -1,10 +1,10 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+import axios, { AxiosResponse, AxiosRequestConfig,InternalAxiosRequestConfig } from 'axios';
 
 const service = axios.create();
 
 // Request interceptors
 service.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
+    (config: InternalAxiosRequestConfig) => {
         // do something
         return config;
     },
@@ -15,8 +15,9 @@ service.interceptors.request.use(
 
 // Response interceptors
 service.interceptors.response.use(
-    async (response: AxiosResponse) => {
+    async (response: AxiosResponse) => <AxiosResponse>{
         // do something
+        
     },
     (error: any) => {
         // do something

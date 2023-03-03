@@ -2,8 +2,6 @@
 import Header from '@/components/head.vue'
 import { useComponentsStore } from './store/components'
 import { useUserSelectComponentsStore } from './store/userSelectComponents'
-import { useEditor } from './pages/hooks/hooks.js'
-const { restActiveStyleHeight } = useEditor()
 const useComponents = useComponentsStore()
 const useUserSelectComponents = useUserSelectComponentsStore()
 const config:any = {

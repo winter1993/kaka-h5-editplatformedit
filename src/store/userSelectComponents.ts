@@ -3,7 +3,7 @@ export const useUserSelectComponentsStore = defineStore({
     id:'userSelectComponents',
     state:() => {
         return {
-            userSelectComponents:[]
+            userSelectComponents:<any>[]
         }
     },
     actions:{

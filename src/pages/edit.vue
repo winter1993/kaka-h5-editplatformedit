@@ -88,7 +88,7 @@ import {
 import { FormKitSchema } from "@formkit/vue";
 import ComponentSelect from "./componentsSelect.vue";
 import { reactive, watch } from "vue";
-import { useEditor } from "./hooks/hooks.js";
+import { useEditor } from "./hooks/hooks";
 import { useDragStore } from "@/store/dragMask";
 import { useUserSelectComponentsStore } from "@/store/userSelectComponents";
 const host = import.meta.env.MODE
