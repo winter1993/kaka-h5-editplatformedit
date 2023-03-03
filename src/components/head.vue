@@ -22,7 +22,7 @@
         </a-menu-item>
         <slot name="menu">
           <a-menu-item>
-            <router-link to="/dashboard"> 工作台 </router-link>
+            <router-link to="/"> 工作台 </router-link>
           </a-menu-item>
         </slot>
       </a-menu>

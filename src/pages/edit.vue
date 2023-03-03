@@ -8,11 +8,12 @@
         <div class="preview-container">
           <a-spin :spinning="state.spinning">
             <iframe
+              referrerpolicy="unsafe-url"
               id="frame"
               @load="initConfig"
               frameborder="0"
               class="pre-view"
-              src="http://localhost:8080/"
+              :src="host === 'development'?'http://localhost:8080/':'https://winter1993.github.io/kaka-template/'"
               :style="{
                 height: editorState.containerHeight + 'px',
               }"
@@ -90,6 +91,8 @@ import { reactive, watch } from "vue";
 import { useEditor } from "./hooks/hooks.js";
 import { useDragStore } from "@/store/dragMask";
 import { useUserSelectComponentsStore } from "@/store/userSelectComponents";
+const host = import.meta.env.MODE
+console.log('host:',host)
 const useDrag = useDragStore();
 const { eventInit, editorState, getIndex, setFixedStyle, init } = useEditor();
 const state: any = reactive({
