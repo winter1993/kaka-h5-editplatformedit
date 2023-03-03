@@ -33,8 +33,8 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-    // history:createWebHistory(),
-    history:createWebHashHistory(import.meta.env.BASE_URL), //前端打包使用createWebHashHistory
+    history:createWebHistory(import.meta.env.BASE_URL),
+    // history:createWebHashHistory(import.meta.env.BASE_URL), //前端打包使用createWebHashHistory
     routes
 })
 
