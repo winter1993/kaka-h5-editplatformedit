@@ -190,4 +190,24 @@ const initConfig = () => {
   background: #fff;
   width: 300px;
 }
+  .pre-view html::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .pre-view html::-webkit-scrollbar-track {
+    border-radius: 8px;
+  }
+  /* 滚动条滑块 */
+  .pre-view html::-webkit-scrollbar-thumb {
+    outline-offset: -2px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.12);
+    -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+    
+  }
+  /* 旧语法 */
+  .pre-view html::-webkit-scrollbar-thumb:hover {
+    background-color: #615fe1;
+    transition: scrollbar-color 0.5s ease-out;
+  }
 </style>
