@@ -6,6 +6,7 @@ import * as path from 'path';
 export default defineConfig({
     build:{
         outDir:'docs',
+        assetsDir:'docs'
     },
     resolve: {
         //设置别名
@@ -13,6 +14,7 @@ export default defineConfig({
             '@': path.resolve(__dirname, 'src')
         }
     },
+    
     base:'./',
     plugins: [vue()],
     server: {
