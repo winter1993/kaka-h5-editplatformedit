@@ -6,12 +6,13 @@ import * as path from 'path';
 export default defineConfig({
     build:{
         outDir:'docs',
+        
     },
     resolve: {
         //设置别名
         alias: {
             '@': path.resolve(__dirname, 'src')
-        }
+        },
     },
     
     base:'/kaka-h5-editplatformedit/',
