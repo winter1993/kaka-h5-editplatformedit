@@ -87,6 +87,7 @@ import {
   ArrowDownOutlined,
 } from "@ant-design/icons-vue";
 import { FormKitSchema } from "@formkit/vue";
+import { message } from 'ant-design-vue';
 import ComponentSelect from "./componentsSelect.vue";
 import { reactive, watch } from "vue";
 import { useEditor } from "./hooks/hooks";
@@ -117,8 +118,15 @@ const postMsgToChild = (msg: any) => {
   window.frames[0] && window.frames[0].postMessage(msg, "*");
 };
 const changeIndex = (op: any) => {
-  postMsgToChild({ type: "sortComponent", data: { op, index: editorState.current } });
   const num = editorState.current + op
+
+  console.log("num:",num)
+  console.log("current:",editorState.current)
+  if(num > useUserSelectComponents.userSelectComponents.length || num < 1 ){
+    message.warning('can not move!');
+    return
+  }
+  postMsgToChild({ type: "sortComponent", data: { op, index: editorState.current } });
   editorState.current = num
 };
 const copyComponent = () => {
