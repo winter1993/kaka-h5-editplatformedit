@@ -129,22 +129,10 @@ body {
           }
         }
       }
-      .logo-container {
-        height: 50px;
-        width: 100px;
-        background: url("../assets/image/logo.png") no-repeat center center;
-        background-size: 110%;
-      }
     }
   }
   .logo {
     height: 50px;
-    .logo-container {
-      height: 50px;
-      width: 100px;
-      background: url("../assets/image/logo.png") no-repeat center center;
-      background-size: 110%;
-    }
   }
 }
 </style>
