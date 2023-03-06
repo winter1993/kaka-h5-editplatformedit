@@ -134,7 +134,8 @@ const init = (index:any) => {
   if (index === -1) return;
   const node = componentsPND.childNodes[index];
   console.log('node:',index,componentsPND.childNodes)
-  if (node.nodeName === "#text"  ) return
+  if(!node) return
+  if (node?.nodeName === "#text"  ) return
   let currentId = node?.getAttribute('id') || '';
   const top = getElementTop(node);
   const { height } = getComputedStyle(node);
@@ -159,7 +160,7 @@ const init = (index:any) => {
     state.dragableComponents = [];
     Array.from(componentsPND?.childNodes || []).forEach((nd:any) => {
       if(!nd) return
-      if(nd.nodeName === "#text" ) return
+      if(nd?.nodeName === "#text" ) return
       if (nd?.getAttribute('data-layout') === 'fixed') {
         try {
           const el = nd.childNodes[0];
