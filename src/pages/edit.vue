@@ -100,7 +100,10 @@ const { eventInit, editorState, getIndex, setFixedStyle, init } = useEditor();
 const state: any = reactive({
   spinning: true,
 });
-
+const useUserSelectComponents = useUserSelectComponentsStore();
+const postMsgToChild = (msg: any) => {
+  window.frames[0] && window.frames[0].postMessage(msg, "*");
+};
 const register = (e: any) => {
   console.log("register:", e);
   const comp = [...useUserSelectComponents.userSelectComponents];
@@ -113,13 +116,9 @@ const register = (e: any) => {
     },
   });
 };
-const useUserSelectComponents = useUserSelectComponentsStore();
-const postMsgToChild = (msg: any) => {
-  window.frames[0] && window.frames[0].postMessage(msg, "*");
-};
+
 const changeIndex = (op: any) => {
   const num = editorState.current + op
-
   console.log("num:",num)
   console.log("current:",editorState.current)
   if(num > useUserSelectComponents.userSelectComponents.length || num < 1 ){
@@ -184,7 +183,7 @@ const initConfig = () => {
     [() => useUserSelectComponents.userSelectComponents, () => editorState.current],
     () => {
       init(editorState.current);
-      // setFixedStyle(editorState.current);
+      setFixedStyle(editorState.current);
     }
   );
 };
